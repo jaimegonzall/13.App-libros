@@ -15,8 +15,14 @@ Este es mi primer gestor de libros. Pretendo realizar una base de datos personal
 * Local Storage.
 * Anular la plantilla y darle estilos personalizados a la app.
 
-# Primera iteración
+### Primera iteración
 * Instalar el servidor local "Lite Server".
 * https://www.npmjs.com/package/lite-server
 * Agregar la min-css de un tema por <link>: [Tema Cosmo](https://bootswatch.com/cosmo/)
 * Creamos el index.html con la estructura principal de la web: Formulario y tabla de datos
+
+### Segunda iteración
+* Crear las clases necesarias (usuario, datos).
+* Iniciar la manipulación del DOM.
+* Crear libro y guardarlo en JSON (local storage).
+* Validar formulario.
