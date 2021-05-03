@@ -1,0 +1,15 @@
+{
+  "name": "13.app-libros",
+  "version": "1.0.0",
+  "description": "Mi primer gestor de libros.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "lite-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
