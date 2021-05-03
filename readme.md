@@ -13,7 +13,10 @@ Este es mi primer gestor de libros. Pretendo realizar una base de datos personal
 * Arrays.
 * Control del DOM.
 * Local Storage.
-* Anular la plantilla y darle estilos personalizados a la app.
+* Anular la plantilla y dar estilos personalizados (usar SASS).
+* Testing
+
+## Iteraciones
 
 ### Primera iteración
 * Instalar el servidor local "Lite Server".
@@ -24,5 +27,16 @@ Este es mi primer gestor de libros. Pretendo realizar una base de datos personal
 ### Segunda iteración
 * Crear las clases necesarias (usuario, datos).
 * Iniciar la manipulación del DOM.
+* Validar formulario de libros.
 * Crear libro y guardarlo en JSON (local storage).
-* Validar formulario.
+
+### Tercera iteración
+* Obtenemos los libros del Local Storage.
+* Los imprimimos en el DOM.
+* Cada nuevo libro que creamos lo imprime en el DOM.
+* Creamos el botón de eliminar libro y le damos función.
+
+### Cuarta iteración
+* Anular plantilla
+* Crear estilos personalizados con SASS
+* Usar iconos, con librería o como quieras.

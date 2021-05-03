@@ -11,16 +11,27 @@ class Libro{
 }
 
 class UI{
-    static mostrarLibros(){
-
+    static mostrarLibros(){ //consulta los datos
+        const libros = Datos.traerLibros();
+        libros.forEach((libro) => UI.agregarLibroLista(libro));
     }
 
     static agregarLibroLista(libro){
-
+        const lista = document.querySelector('#libro-list');
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+            <td>${libro.titulo}</td>
+            <td>${libro.autor}</td>
+            <td>${libro.isbn}</td>
+            <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+        `;
+        lista.appendChild(fila);
     }
 
-    static eliminarLibro(){
-
+    static eliminarLibro(el){
+        if(el.classList.contains('delete')){
+            el.parentElement.parentElement.remove(); //alimino, partiendo del botón, su padre (td) y el padre de este (tr)
+        }
     }
     static mostrarAlerta(mensaje, className){ // mensaje + clase
         const div = document.createElement('div');
@@ -59,10 +70,19 @@ class Datos{
         localStorage.setItem('libros', JSON.stringify(libros));
 
     }
-    static removerLibro(isbn){
-
+    static removeLibro(isbn){
+        const libros = Datos.traerLibros();
+        libros.forEach((libro, index) => {
+            if(libro.isbn === isbn){
+                libros.splice(index, 1);
+            }
+        });
+        localStorage.setItem('libros', JSON.stringify(libros));
     }
 }
+
+//Carga de la página
+document.addEventListener('DOMContentLoaded', UI.mostrarLibros);
 
 var formulario = document.querySelector('#libro-form');
 formulario.addEventListener('submit', (e) =>{
@@ -86,7 +106,16 @@ formulario.addEventListener('submit', (e) =>{
         UI.mostrarAlerta('Ingrese todos los datos del formulario', 'danger'); //danger es una clase css
     } else{
         const libro = new Libro (titulo, autor, isbn);
+        UI.mostrarAlerta('Libro creado con éxito', 'success');
         Datos.agregarLibro(libro);
+        UI.agregarLibroLista(libro);
         UI.limpiarCampo();
     }
+});
+
+document.querySelector('#libro-list').addEventListener('click', (e) =>{
+    UI.eliminarLibro(e.target);
+    // va al botón, va a su padre (td), va a su hermano superior (tc con el isbn) y coge el texto
+    Datos.removeLibro(e.target.parentElement.previousElementSibling.textContent);
+    UI.mostrarAlerta('Libro eliminado', 'success')
 });
